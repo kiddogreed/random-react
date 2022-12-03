@@ -1,62 +1,44 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const Person = (props) =>{
-  return (
-    <>
-      <h1>First Name:{props.firstName}</h1>
-      <h2>Last Name :{props.lastName}</h2>
-      <h3>Age: {props.age}</h3>
-    </>
-  )
-}
-
 const App= ()=> {
-  const test = 'test'
-  const isNameShowing = false
+  
+  
+  // const apiKey ='3ff04cf5'
+  // const API_URL =`http://www.omdbapi.com?apikey=${apiKey}`
 
-  const [counter, setCounter] = useState(0)
+  // const searchMovies = async (title) =>{
+  // const response = await fetch(`${API_URL}&s${title}`)
+  // const data = await response.json()
+  // console.log(data);
+  // } 
+  // useEffect(() => {
+  //   searchMovies('Spiderman')
+  
+  // }, [])
+  
+  const [counter, setCounter] = useState(1)
+  const currentFlr = counter
+  const maxFlr = 30
+  const minflr = 1
 
-
- const increaseMe = () =>{
-   //alert('increase') to test the function
-  //use setState setCounter
-  setCounter((prevCount) =>prevCount +1) 
+  const goUp =() =>{ 
+    setCounter((prevCount)=> prevCount + 1)
   }
- const decreaseMe = () =>{
-   //alert('decrease')
-   setCounter((prevCount)=>prevCount -1)
-   
-  }
 
- useEffect(() =>{
-   //setCounter(100)
-   alert('you change the counter'+counter)
- },[counter])
-  
-  
-  
-  
+  const goDown =() =>{
+
+      setCounter((prevCount)=> 
+      //validate
+      prevCount - 1) 
+    
+  }
 
   return (
     <div className="App">
-     <button onClick={increaseMe}>+</button><br></br>
-     {counter}
-     <br></br>
-     <button onClick={decreaseMe}>-</button><br></br>
-     
-  
-     {
-      isNameShowing ? (
-         <>
-           true
-         </>
-       ):(
-         <>
-           false
-         </>
-       )
-     }
+     <button onClick={goUp}>up</button><br></br>
+      <h1><input type={'number'}></input>   :   {currentFlr} Flr</h1> 
+      <button onClick={goDown}>down</button><br></br>
     </div>
   );
 }
